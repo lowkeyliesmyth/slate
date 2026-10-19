@@ -1,0 +1,19 @@
+# Generated API docs from `crystal docs`
+/docs/
+
+# Shard and build output
+/lib/
+/bin/
+/.shards/
+*.dwarf
+.env
+
+# Runtime scratch space
+/tmp/
+
+# JavaScript dependency cache
+/node_modules/
+
+# Asset build output, produced by `bun run build`
+/public/assets/
+/public/bun-manifest.json
