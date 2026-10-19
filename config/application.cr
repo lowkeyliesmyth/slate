@@ -22,3 +22,18 @@
 # # In your application, call
 # # `Application.settings.support_email` anywhere you need it.
 # ```
+
+require "../src/slate/development_access"
+
+module Application
+  Habitat.create do
+    setting development_access : Bool = false
+  end
+end
+
+Application.configure do |settings|
+  settings.development_access = Slate::DevelopmentAccess.resolve(
+    ENV["SLATE_DEVELOPMENT_ACCESS"]?,
+    LuckyEnv.environment
+  )
+end
