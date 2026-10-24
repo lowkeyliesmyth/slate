@@ -14,9 +14,6 @@ module Slate
       getter role : UserRole
 
       def initialize(@id : UUID, @display_name : String, @role : UserRole)
-        unless @id.v7?
-          raise ArgumentError.new("User ids must be UUIDv7.")
-        end
       end
 
       def system_owner? : Bool

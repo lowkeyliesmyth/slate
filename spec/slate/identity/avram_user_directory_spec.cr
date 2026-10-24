@@ -68,23 +68,4 @@ describe Slate::Identity::AvramUserDirectory do
       directory.find(UUID.new("00000000-0000-7000-8000-000000000009"))
     end
   end
-
-  it "rejects invalid persisted identity records" do
-    now = Time.utc
-    record = DirectoryUser.new(
-      id: UUID.new("00000000-0000-4000-8000-000000000001"),
-      created_at: now,
-      updated_at: now,
-      display_name: "Invalid",
-      role: Slate::Identity::UserRole::Standard.value
-    )
-    storage = DirectoryRecordLookupDouble.new(record)
-    directory = Slate::Identity::AvramUserDirectory.new(
-      ->(id : UUID) { storage.find(id) }
-    )
-
-    expect_raises(ArgumentError, "User ids must be UUIDv7.") do
-      directory.find(record.id)
-    end
-  end
 end
