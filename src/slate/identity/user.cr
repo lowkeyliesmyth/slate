@@ -3,8 +3,9 @@ require "uuid"
 module Slate
   module Identity
     enum UserRole
-      Standard
-      SystemOwner
+      # Making these implicit values explicit to more easily tie them to the directoryuser PG table role values.
+      Standard    = 0
+      SystemOwner = 1
     end
 
     struct User

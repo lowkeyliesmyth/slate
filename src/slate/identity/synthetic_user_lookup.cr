@@ -13,11 +13,11 @@ module Slate
       def initialize(@directory : UserDirectory, @development_access : Bool)
       end
 
-      # Resolves **id** to the current directory User.
+      # Resolves **id** to the current directory_user.
       # Disabled outside of development.
       # Raises:
       # - AccessDenied when attempted outside of development
-      # - UserNotFound for unavailable synthetic user
+      # - UserNotFound for unavailable synthetic directory_user
       # - propagates storage failures
       def resolve(id : UUID) : User
         unless @development_access
