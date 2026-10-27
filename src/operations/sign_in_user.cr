@@ -13,8 +13,6 @@ class SignInUser < Avram::Operation
 
     if valid?
       user
-    else
-      nil
     end
   end
 

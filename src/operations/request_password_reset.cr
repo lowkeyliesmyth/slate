@@ -11,8 +11,6 @@ class RequestPasswordReset < Avram::Operation
 
     if valid?
       user
-    else
-      nil
     end
   end
 

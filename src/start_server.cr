@@ -10,7 +10,7 @@ end
 app_server = AppServer.new
 puts "Listening on http://#{app_server.host}:#{app_server.port}"
 
-Signal::INT.trap do
+Process.on_terminate do
   app_server.close
 end
 

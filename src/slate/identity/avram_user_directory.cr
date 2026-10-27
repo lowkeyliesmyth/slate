@@ -15,7 +15,7 @@ module Slate
       #
       # Return nil if no user is found.
       def find(id : UUID) : User?
-        return nil unless record = @lookup.call(id)
+        return unless record = @lookup.call(id)
 
         User.new(record.id, record.display_name, record.role)
       end

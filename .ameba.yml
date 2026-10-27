@@ -7,3 +7,7 @@ Lint/SpecFilename:
   - spec/setup/reset_emails.cr
   - spec/setup/setup_database.cr
   - spec/setup/start_app_server.cr
+
+Performance/AnyInsteadOfPresent:
+  Excluded:
+  - src/slate/identity/avram_directory_user_writer.cr

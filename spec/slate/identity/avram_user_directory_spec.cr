@@ -40,7 +40,7 @@ describe Slate::Identity::AvramUserDirectory do
       ->(requested_id : UUID) { storage.find(requested_id) }
     )
 
-    user = directory.find(id).not_nil!
+    user = directory.find(id).not_nil! # ameba:disable Lint/NotNil
 
     storage.requested_ids.should eq([id])
     user.id.should eq(id)
