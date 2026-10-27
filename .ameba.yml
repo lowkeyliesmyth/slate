@@ -1,0 +1,9 @@
+Version: "1.7.0"
+
+Lint/SpecFilename:
+  Excluded:
+  - spec/setup/clean_database.cr
+  - spec/setup/configure_lucky_flow.cr
+  - spec/setup/reset_emails.cr
+  - spec/setup/setup_database.cr
+  - spec/setup/start_app_server.cr

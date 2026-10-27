@@ -46,5 +46,21 @@ tasks:
 
   spec:
     desc: Run Crystal specs
+    deps: [pg:up]
     cmds:
       - crystal spec --order random
+
+  spec:unit:
+    desc: Run db-free Slate specs
+    cmds:
+      - crystal spec spec/slate --order random
+
+  pg:up:
+    desc: Docker compose postgres up
+    cmds:
+      - docker compose up -d postgres
+
+  pg:down:
+    desc: Docker compose postgres down
+    cmds:
+      - docker compose down postgres
