@@ -11,6 +11,9 @@ module Slate
       )
       end
 
+      # Look up a synthetic DirectoryUser by **id** via the configured lookup proc and map it to a domain User.
+      #
+      # Return nil if no user is found.
       def find(id : UUID) : User?
         return nil unless record = @lookup.call(id)
 
