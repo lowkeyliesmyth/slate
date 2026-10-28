@@ -16,27 +16,54 @@ TODO: Write usage instructions here
 
 TODO: Write development instructions here
 
-## Setting up the project
+## Host setup and development
 > See  [Install required dependencies](https://luckyframework.org/guides/getting-started/installing#install-required-dependencies) for reference.
 
+Slate requires crystal, lucky-cli, and bun. Local development also uses mise, docker-compose, and taskfile installed locally.
+
 ### Install prerequisites
-1. mise use -g crystal
-1. git clone https://github.com/luckyframework/lucky_cli.git
-2. shards install --without-development
-3. shards build --production
-4. cp bin/luck_cli ~/bin/
-1. mise use -g bun
-1. shards install
-1. bun install 
-2. bun run build
-1. Create a .env file with details that match those in docker-compose.yml
-    DB_HOST=127.0.0.1
-    DB_PORT=6543
-    DB_USERNAME=lucky
-    DB_PASSWORD=password
-1. docker compose up -d postgres
-1. crystal script/setup.cr
-2. lucky dev
+1. Install [mise](https://mise.jdx.dev)
+2. Install docker-compose however you want. (mise is an option here, too)
+2. Install other prereqs via mise
+
+        mise install
+
+3. Install [lucky-cli](https://luckyframework.org/guides/getting-started/installing#install-lucky-cli-manually)
+
+        pushd ~/Downloads
+        git clone https://github.com/luckyframework/lucky_cli.git
+        cd lucky_cli
+        shards install --without-development
+        shards build --production
+        cp bin/lucky_cli ~/bin/
+
+### Configure
+Create or update `.env` with local development-only settings.
+
+```dotenv
+DB_HOST=127.0.0.1
+DB_PORT=6543
+DB_USERNAME=lucky
+DB_PASSWORD=password
+```
+
+### Setup
+Run `task setup`.
+
+This installs dependencies, builds javascript assets, initializes the database and applies required migrations. 
+
+### Optionally enable synthetic identities
+
+```sh
+LUCKY_ENV=development SLATE_DEVELOPMENT_ACCESS=true lucky db.seed.synthetic_users
+```
+
+### Run
+```sh
+lucky dev
+```
+
+Open the local UI at 'http://127.0.0.1:3000/`.
 
 ## Contributing
 

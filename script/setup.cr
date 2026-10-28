@@ -31,7 +31,7 @@ run_command "lucky", "db.setup"
 
 notice "Seeding the database with required and sample records"
 run_command "lucky", "db.seed.required_data"
-run_command "lucky", "db.seed.sample_data"
+run_command "lucky", "db.seed.synthetic_users"
 
 print_done
 notice "Run 'lucky dev' to start the app"

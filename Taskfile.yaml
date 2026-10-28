@@ -64,3 +64,9 @@ tasks:
     desc: Docker compose postgres down
     cmds:
       - docker compose down postgres
+
+  setup:
+    desc: Initial project setup
+    deps: [pg:up]
+    cmds:
+      - crystal script/setup.cr
